@@ -21,4 +21,4 @@ graph TD
     A --> E[mods.html - Модификации]
     A --> F[gallery.html - Галерея]
     A --> G[style.css - Стили и темы]
-    A --> H[script.js - JS Анимации и IntersectionObserver]
+    A --> H[script.js - JS Анимации и IntersectionObserver] 
