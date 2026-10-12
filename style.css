@@ -98,16 +98,22 @@ p {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    align-items: stretch; /* Чтобы карточки были одной высоты */
 }
 
 .card {
     background: var(--card-bg);
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem; /* Немного уменьшил паддинг */
     border: 1px solid #2a2a2e;
     transition: var(--transition);
     opacity: 0;
     transform: translateY(20px);
+    
+    /* ФИКС: Гарантирует, что контент не вылезет */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
 }
 
 .card.visible {
@@ -122,10 +128,11 @@ p {
 }
 
 .card h3 {
-    margin-bottom: 1rem;
+    margin-top: auto;
+    margin-bottom: 0.5rem;
     color: #fff;
+    font-size: 1.3rem;
 }
-
 /* Кнопки */
 .btn {
     display: inline-block;
@@ -159,9 +166,21 @@ footer {
 /* Стили для картинок в карточках */
 .card img {
     width: 100%;
-    height: 180px;
-    object-fit: cover;
+    
+    /* ЖЕСТКИЙ ФИКС ВЫСОТЫ: Все картинки будут 200px */
+    height: 200px; 
+    
+    /* МАГИЯ: Картинка масштабируется и обрезается, 
+       не растягиваясь криво */
+    object-fit: cover; 
+    
+    object-position: center; /* Центрируем */
     border-radius: 8px;
     margin-bottom: 1rem;
     border: 1px solid #2a2a2e;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 0; /* Убираем лишний отступ снизу */
 }
